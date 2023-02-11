@@ -1,0 +1,6 @@
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/persistence/ReviewEntity.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/services/ReviewMapper.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/services/MessageProcessorConfiguration.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/ReviewServiceApplication.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/persistence/ReviewRepository.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/review-service/src/main/java/com/msuzuki/microservices/core/review/services/ReviewServiceImpl.java

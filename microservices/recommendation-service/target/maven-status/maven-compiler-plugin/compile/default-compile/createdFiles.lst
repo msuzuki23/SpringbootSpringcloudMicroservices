@@ -1,0 +1,8 @@
+com/msuzuki/microservices/core/recommendation/services/MessageProcessorConfig.class
+com/msuzuki/microservices/core/recommendation/persistence/RecommendationEntity.class
+com/msuzuki/microservices/core/recommendation/persistence/RecommendationRepository.class
+com/msuzuki/microservices/core/recommendation/services/RecommendationMapper.class
+com/msuzuki/microservices/core/recommendation/services/MessageProcessorConfig$1.class
+com/msuzuki/microservices/core/recommendation/RecommendationServiceApplication.class
+com/msuzuki/microservices/core/recommendation/services/RecommendationServiceImpl.class
+com/msuzuki/microservices/core/recommendation/services/RecommendationMapperImpl.class

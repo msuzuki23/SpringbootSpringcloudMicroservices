@@ -1,0 +1,8 @@
+com/msuzuki/microservices/core/review/ReviewServiceApplication.class
+com/msuzuki/microservices/core/review/services/MessageProcessorConfiguration$1.class
+com/msuzuki/microservices/core/review/services/MessageProcessorConfiguration.class
+com/msuzuki/microservices/core/review/services/ReviewMapperImpl.class
+com/msuzuki/microservices/core/review/persistence/ReviewRepository.class
+com/msuzuki/microservices/core/review/persistence/ReviewEntity.class
+com/msuzuki/microservices/core/review/services/ReviewMapper.class
+com/msuzuki/microservices/core/review/services/ReviewServiceImpl.class

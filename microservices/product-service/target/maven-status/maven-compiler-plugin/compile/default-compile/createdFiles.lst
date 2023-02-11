@@ -1,0 +1,8 @@
+com/msuzuki/microservices/core/product/services/ProductMapperImpl.class
+com/msuzuki/microservices/core/product/persistence/ProductRepository.class
+com/msuzuki/microservices/core/product/services/ProductMapper.class
+com/msuzuki/microservices/core/product/ProductServiceApplication.class
+com/msuzuki/microservices/core/product/persistence/ProductEntity.class
+com/msuzuki/microservices/core/product/services/MessageProcessorConfig$1.class
+com/msuzuki/microservices/core/product/services/ProductServiceImpl.class
+com/msuzuki/microservices/core/product/services/MessageProcessorConfig.class

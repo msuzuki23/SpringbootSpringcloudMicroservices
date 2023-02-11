@@ -1,0 +1,17 @@
+com/msuzuki/api/composite/product/ReviewSummary.class
+com/msuzuki/api/core/recommendation/RecommendationService.class
+com/msuzuki/api/core/recommendation/Recommendation.class
+com/msuzuki/api/composite/product/ProductCompositeService.class
+com/msuzuki/api/core/review/ReviewService.class
+com/msuzuki/api/exceptions/EventProcessingException.class
+com/msuzuki/api/composite/product/ServiceAddresses.class
+com/msuzuki/api/exceptions/NotFoundException.class
+com/msuzuki/api/core/review/Review.class
+com/msuzuki/api/event/Event.class
+com/msuzuki/api/composite/product/RecommendationSummary.class
+com/msuzuki/api/core/product/ProductService.class
+com/msuzuki/api/event/Event$Type.class
+com/msuzuki/api/exceptions/BadRequestException.class
+com/msuzuki/api/core/product/Product.class
+com/msuzuki/api/composite/product/ProductAggregate.class
+com/msuzuki/api/exceptions/InvalidInputException.class

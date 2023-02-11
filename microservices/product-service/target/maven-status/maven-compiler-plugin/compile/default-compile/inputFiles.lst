@@ -1,0 +1,6 @@
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/persistence/ProductRepository.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/services/MessageProcessorConfig.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/services/ProductServiceImpl.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/services/ProductMapper.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/ProductServiceApplication.java
+/home/markus/Documents/SpringCloudMicroservices/microservices/product-service/src/main/java/com/msuzuki/microservices/core/product/persistence/ProductEntity.java
