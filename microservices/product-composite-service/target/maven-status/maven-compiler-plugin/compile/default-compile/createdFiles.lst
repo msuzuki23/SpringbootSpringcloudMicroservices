@@ -1,3 +1,5 @@
 com/msuzuki/microservices/composite/product/ProductCompositeServiceApplication.class
 com/msuzuki/microservices/composite/product/services/ProductCompositeServiceImpl.class
+com/msuzuki/microservices/composite/product/OpenApiConfig.class
 com/msuzuki/microservices/composite/product/services/ProductCompositeIntegration.class
+com/msuzuki/microservices/composite/product/SecurityConfig.class

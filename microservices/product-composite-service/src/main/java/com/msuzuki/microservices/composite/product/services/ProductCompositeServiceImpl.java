@@ -7,6 +7,8 @@ import com.msuzuki.api.core.review.Review;
 import com.msuzuki.util.http.ServiceUtil;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
 
@@ -61,13 +63,13 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
     }
 
     @Override
-    public Mono<ProductAggregate> getProduct(int productId) {
+    public Mono<ProductAggregate> getProduct(int productId, int delay, int faultPercent) {
 
         log.info("Will get composite product info for productId: {}", productId);
 
         return Mono.zip(
                         values -> createProductAggregate((Product) values[0], (List<Recommendation>) values[1], (List<Review>) values[2], serviceUtil.getServiceAddress()),
-                        integration.getProduct(productId),
+                        integration.getProduct(productId, delay, faultPercent),
                         integration.getRecommendations(productId).collectList(),
                         integration.getReviews(productId).collectList())
                 .doOnError(ex -> log.warn("getCompositeProduct failed: {}", ex.toString()))
@@ -123,4 +125,8 @@ public class ProductCompositeServiceImpl implements ProductCompositeService {
 
         return new ProductAggregate(productId, name, weight, recommendationSummaries, reviewSummaries, serviceAddresses);
     }
+
+    // TODO: In Chapter 12 there is an extra code/function related to Security and Authorization
+    // Double-check that to make sure that is related to the authorization server
+    // Double-check if this is needed when using Keycloak
 }

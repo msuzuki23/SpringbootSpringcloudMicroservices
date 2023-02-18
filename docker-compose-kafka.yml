@@ -1,3 +1,6 @@
+# TODO: Have to add the configurations from SpringCloud Chapter 8 onwards
+# Haven't ran this docker build from Spring Cloud implementation onwards
+
 version: '2.1'
 
 services:
@@ -70,8 +73,6 @@ services:
   product-composite:
     build: microservices/product-composite-service
     mem_limit: 512m
-    ports:
-      - "8080:8080"
     environment:
       - SPRING_PROFILES_ACTIVE=docker,streaming_partitioned,kafka
     depends_on:
@@ -125,3 +126,15 @@ services:
       - "2181:2181"
     environment:
       - KAFKA_ADVERTISED_HOST_NAME=zookeeper
+
+  eureka:
+    build: spring-cloud/eureka-server
+    mem_limit: 512m
+
+  gateway:
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    build: spring-cloud/gateway
+    mem_limit: 512m
+    ports:
+      - "8443:8443"

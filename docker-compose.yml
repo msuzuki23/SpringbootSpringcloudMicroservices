@@ -1,49 +1,76 @@
 version: '2.1'
 
 services:
+  configserver:
+    build: configserver
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker,native
+    volumes:
+      - ./config-repo:/config-repo
+
+  keycloak-mysql:
+    image: mysql:5.7
+    volumes:
+      - ./mysql_keycloak_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: password
+
+  authserver:
+    image: quay.io/keycloak/keycloak:18.0.0
+    command: [ "start-dev", "--import-realm" ]
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      DB_VENDOR: MYSQL
+      DB_ADDR: mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: password
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    expose:
+      - "8080"
+    volumes:
+      - ./realms/:/opt/keycloak/data/import/
+    depends_on:
+      - keycloak-mysql
+
+  gateway:
+    build: gateway
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    mem_limit: 512m
+    ports:
+      - "8181:8080"
+    expose:
+      - "8181"
+    restart: on-failure
+
+  eureka:
+    build: eurekaserver
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+  #      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+  #      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
+    restart: on-failure
+
   product:
     build: microservices/product-service
     mem_limit: 512m
     environment:
       - SPRING_PROFILES_ACTIVE=docker
+#      - CONFIG_SERVER_USR=${CONFIG_SERVER_USR}
+#      - CONFIG_SERVER_PWD=${CONFIG_SERVER_PWD}
+    restart: on-failure
     depends_on:
-      mongodb:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-
-  recommendation:
-    build: microservices/recommendation-service
-    mem_limit: 512m
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      mongodb:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-
-  review:
-    build: microservices/review-service
-    mem_limit: 512m
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      mysql:
-        condition: service_healthy
-      rabbitmq:
-        condition: service_healthy
-
-  product-composite:
-    build: microservices/product-composite-service
-    mem_limit: 512m
-    ports:
-      - "8080:8080"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    depends_on:
-      rabbitmq:
-        condition: service_healthy
+      - mongodb
+      - rabbitmq
 
   mongodb:
     image: mongo:4.4.2
@@ -53,22 +80,6 @@ services:
     command: mongod
     healthcheck:
       test: "mongo --eval 'db.stats().ok'"
-      interval: 5s
-      timeout: 2s
-      retries: 60
-
-  mysql:
-    image: mysql:5.7.32
-    mem_limit: 512m
-    ports:
-      - "3306:3306"
-    environment:
-      - MYSQL_ROOT_PASSWORD=rootpwd
-      - MYSQL_DATABASE=review-db
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=pwd
-    healthcheck:
-      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
       interval: 5s
       timeout: 2s
       retries: 60
@@ -84,3 +95,52 @@ services:
       interval: 5s
       timeout: 2s
       retries: 60
+
+  recommendation:
+    build: microservices/recommendation-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    restart: on-failure
+    depends_on:
+      - mongodb
+      - rabbitmq
+
+  review:
+    build: microservices/review-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    restart: on-failure
+    depends_on:
+      - mysql
+      - rabbitmq
+
+  product-composite:
+    build: microservices/product-composite-service
+    mem_limit: 512m
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    restart: on-failure
+    depends_on:
+      - rabbitmq
+
+  mysql:
+    image: mysql:5.7.32
+    mem_limit: 512m
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=p
+      - MYSQL_DATABASE=review-db
+      - MYSQL_USER=u
+      - MYSQL_PASSWORD=p
+    healthcheck:
+      test: "/usr/bin/mysql --user=user --password=pwd --execute \"SHOW DATABASES;\""
+      interval: 5s
+      timeout: 2s
+      retries: 60
+
+
+
+

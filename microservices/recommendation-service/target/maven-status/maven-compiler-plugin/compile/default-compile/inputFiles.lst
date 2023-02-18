@@ -1,6 +1,6 @@
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/RecommendationServiceImpl.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/RecommendationServiceApplication.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/persistence/RecommendationRepository.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/persistence/RecommendationEntity.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/RecommendationMapper.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/MessageProcessorConfig.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/RecommendationMapper.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/RecommendationServiceApplication.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/persistence/RecommendationRepository.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/MessageProcessorConfig.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/persistence/RecommendationEntity.java
+/home/markus/Documents/SpringBootMicroservices/microservices/recommendation-service/src/main/java/com/msuzuki/microservices/core/recommendation/services/RecommendationServiceImpl.java

@@ -7,9 +7,12 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="eurekaserver" />
         <module name="api" />
+        <module name="configserver" />
         <module name="util" />
         <module name="product-composite-service" />
+        <module name="gateway" />
       </profile>
       <profile name="Annotation profile for microservices" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -26,5 +29,11 @@
         <module name="recommendation-service" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="spring-cloud" target="19" />
+      <module name="spring-cloud (1) (com.msuzuki.eurekaserver)" target="19" />
+      <module name="spring-cloud (2) (com.msuzuki.geteway)" target="19" />
+      <module name="spring-cloud (3) (com.msuzuki.config-server)" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>

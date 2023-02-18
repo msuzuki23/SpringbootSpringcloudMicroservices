@@ -1,0 +1,3 @@
+com/msuzuki/gateway/GatewayApplication.class
+com/msuzuki/gateway/HealthCheckConfiguration.class
+com/msuzuki/gateway/SecurityConfig.class

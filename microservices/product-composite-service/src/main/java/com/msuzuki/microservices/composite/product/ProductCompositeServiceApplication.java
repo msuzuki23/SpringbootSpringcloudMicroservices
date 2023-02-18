@@ -14,8 +14,10 @@ import org.springframework.boot.actuate.health.CompositeReactiveHealthContributo
 import org.springframework.boot.actuate.health.ReactiveHealthContributor;
 import org.springframework.boot.actuate.health.ReactiveHealthIndicator;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
@@ -84,20 +86,9 @@ public class ProductCompositeServiceApplication {
         return Schedulers.newBoundedElastic(threadPoolSize, taskQueueSize, "publish-pool");
     }
 
-    @Autowired
-    ProductCompositeIntegration integration;
-
     @Bean
-    ReactiveHealthContributor coreServices() {
-
-        final Map<String, ReactiveHealthIndicator> registry = new LinkedHashMap<>();
-
-        registry.put("product", () -> integration.getProductHealth());
-        registry.put("recommendation", () -> integration.getRecommendationHealth());
-        registry.put("review", () -> integration.getReviewHealth());
-
-        return CompositeReactiveHealthContributor.fromMap(registry);
-    }
+    @LoadBalanced
+    public WebClient.Builder loadBalanceWebClientBuilder() { return WebClient.builder(); }
 
     public static void main(String[] args) {
         SpringApplication.run(ProductCompositeServiceApplication.class, args);

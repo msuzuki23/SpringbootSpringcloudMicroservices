@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.msuzuki.AppTest" time="0.008" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="com.msuzuki.AppTest" time="0.006" errors="0" skipped="0">
   <properties>
     <property name="idea.version" value="2022.3.2"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="19.0.2+7-44"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/jdk-19/lib"/>
-    <property name="maven.multiModuleProjectDirectory" value="/home/markus/Documents/SpringCloudMicroservices/api"/>
+    <property name="maven.multiModuleProjectDirectory" value="/home/markus/Documents/SpringBootMicroservices/api"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="java.vendor.url" value="https://java.oracle.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -14,7 +14,7 @@
     <property name="user.country" value="CA"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="/home/markus/Documents/SpringCloudMicroservices/api"/>
+    <property name="user.dir" value="/home/markus/Documents/SpringBootMicroservices/api"/>
     <property name="java.vm.compressedOopsMode" value="Zero based"/>
     <property name="java.runtime.version" value="19.0.2+7-44"/>
     <property name="os.arch" value="amd64"/>
@@ -35,7 +35,7 @@
     <property name="java.class.version" value="63.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.15.0-58-generic"/>
+    <property name="os.version" value="5.15.0-60-generic"/>
     <property name="user.home" value="/home/markus"/>
     <property name="user.timezone" value="America/Toronto"/>
     <property name="file.encoding" value="UTF-8"/>
@@ -62,5 +62,5 @@
     <property name="sun.cpu.endian" value="little"/>
     <property name="sun.stdout.encoding" value="UTF-8"/>
   </properties>
-  <testcase classname="com.msuzuki.AppTest" name="shouldAnswerWithTrue" time="0.008"/>
+  <testcase classname="com.msuzuki.AppTest" name="shouldAnswerWithTrue" time="0.006"/>
 </testsuite>

@@ -1,3 +1,5 @@
-/home/markus/Documents/SpringCloudMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/ProductCompositeServiceApplication.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/services/ProductCompositeServiceImpl.java
-/home/markus/Documents/SpringCloudMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/services/ProductCompositeIntegration.java
+/home/markus/Documents/SpringBootMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/SecurityConfig.java
+/home/markus/Documents/SpringBootMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/services/ProductCompositeIntegration.java
+/home/markus/Documents/SpringBootMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/services/ProductCompositeServiceImpl.java
+/home/markus/Documents/SpringBootMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/OpenApiConfig.java
+/home/markus/Documents/SpringBootMicroservices/microservices/product-composite-service/src/main/java/com/msuzuki/microservices/composite/product/ProductCompositeServiceApplication.java
