@@ -6,6 +6,7 @@ import com.msuzuki.api.exceptions.InvalidInputException;
 import com.msuzuki.microservices.core.review.persistence.ReviewEntity;
 import com.msuzuki.microservices.core.review.persistence.ReviewRepository;
 import com.msuzuki.util.http.ServiceUtil;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -25,6 +26,8 @@ import static java.util.logging.Level.FINE;
 @AllArgsConstructor
 @RestController
 public class ReviewServiceImpl implements ReviewService {
+
+    private final ObservationRegistry registry;
 
     private final ReviewRepository repository;
     private final ReviewMapper mapper;

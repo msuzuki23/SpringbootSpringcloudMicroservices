@@ -9,6 +9,7 @@ import com.msuzuki.api.exceptions.InvalidInputException;
 import com.msuzuki.microservices.core.recommendation.persistence.RecommendationEntity;
 import com.msuzuki.microservices.core.recommendation.persistence.RecommendationRepository;
 import com.msuzuki.util.http.ServiceUtil;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,7 +20,7 @@ import reactor.core.publisher.Mono;
 @AllArgsConstructor
 @RestController
 public class RecommendationServiceImpl implements RecommendationService {
-
+    private final ObservationRegistry registry;
     private final RecommendationRepository repository;
     private final RecommendationMapper mapper;
     private final ServiceUtil serviceUtil;

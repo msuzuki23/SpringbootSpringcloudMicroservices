@@ -1,8 +1,27 @@
+# TODO: Better config micrometer to log all way trhu the webflux
+# reference:
+# https://betterprogramming.pub/tracing-in-spring-boot-3-webflux-d432d0c78d3e
+#https://tanzu.vmware.com/developer/guides/observability-reactive-spring-boot-3/:
+
+# Sleuth replacement with Micrometer is not curretly working
+# Needs to dig a little deeper why the TraceId and SpanId is not being passed
+# References:
+# https://stackoverflow.com/questions/74601706/spring-boot-3-webflux-application-with-micrometer-tracing-not-showing-traceid-an
+# https://github.com/micrometer-metrics/micrometer-samples
+# https://github.com/micrometer-metrics/tracing/wiki/Spring-Cloud-Sleuth-3.1-Migration-Guide
+# https://github.com/spring-projects/spring-boot/issues/33372
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+
 app:
   eureka-username: u
   eureka-password: p
   eureka-server: localhost
   auth-server: localhost
+  zipkin: localhost
 
 eureka:
   client:
@@ -21,13 +40,24 @@ spring.rabbitmq:
 #  password: '{cipher}17fcf0ae5b8c5cf87de6875b699be4a1746dd493a99d926c7a26a68c422117ef'
   password: guest
 
+
 spring.cloud.stream.kafka.binder:
   brokers: 127.0.0.1
   defaultBrokerPort: 9092
 
 spring.cloud.stream.defaultBinder: rabbit
-spring.zipkin.sender.type: rabbit
-spring.sleuth.sampler.probability: 1.0
+
+#spring.zipkin:
+#  baseUrL: http://localhost:9411/
+#  sender.type: rabbit
+#spring.sleuth.sampler.probability: 1.0
+management.tracing:
+  enabled: true
+  sampling.probability: 1.0
+
+management.zipkin.tracing.endpoint: http://localhost:9411/api/v2/spans
+
+logging.pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
 
 # WARNING: Exposing all management endpoints over http should only be used during development, must be locked down in production!
 management.endpoint.health.show-details: "ALWAYS"
@@ -43,6 +73,7 @@ spring.cloud.stream.kafka.binder.brokers: kafka
 app:
   eureka-server: eureka
   auth-server: authserver
+  zipkin: localhost
 
 ---
 spring.config.activate.on-profile: kafka

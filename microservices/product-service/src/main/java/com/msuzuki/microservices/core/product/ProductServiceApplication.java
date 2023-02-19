@@ -1,11 +1,16 @@
 package com.msuzuki.microservices.core.product;
 
 import com.msuzuki.microservices.core.product.persistence.ProductEntity;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -45,4 +50,7 @@ public class ProductServiceApplication {
         ReactiveIndexOperations indexOperations = mongoTemplate.indexOps(ProductEntity.class);
         resolver.resolveIndexFor(ProductEntity.class).forEach(e -> indexOperations.ensureIndex(e).block());
     }
+
+
+
 }

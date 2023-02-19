@@ -8,6 +8,7 @@ import com.msuzuki.microservices.core.product.persistence.ProductEntity;
 
 import com.msuzuki.microservices.core.product.persistence.ProductRepository;
 import com.msuzuki.util.http.ServiceUtil;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,15 +26,17 @@ import static java.util.logging.Level.FINE;
 @Slf4j
 @RestController
 public class ProductServiceImpl implements ProductService {
+    private final ObservationRegistry registry;
     private final ServiceUtil serviceUtil;
     private final ProductRepository repository;
     private final ProductMapper mapper;
 
     @Autowired
-    public ProductServiceImpl(ProductRepository repository, ProductMapper mapper, ServiceUtil serviceUtil) {
+    public ProductServiceImpl(ProductRepository repository, ProductMapper mapper, ServiceUtil serviceUtil, ObservationRegistry registry) {
         this.repository = repository;
         this.mapper = mapper;
         this.serviceUtil = serviceUtil;
+        this.registry = registry;
     }
 
     @Override

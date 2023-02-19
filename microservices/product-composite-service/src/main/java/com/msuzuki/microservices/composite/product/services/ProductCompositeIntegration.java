@@ -2,6 +2,7 @@ package com.msuzuki.microservices.composite.product.services;
 
 import static com.msuzuki.api.event.Event.Type.CREATE;
 
+import brave.Tracer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.msuzuki.api.core.product.Product;
 import com.msuzuki.api.core.product.ProductService;
@@ -18,6 +19,10 @@ import io.github.resilience4j.circuitbreaker.CallNotPermittedException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
+import io.micrometer.context.ContextSnapshot;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
+import io.micrometer.observation.contextpropagation.ObservationThreadLocalAccessor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -59,6 +64,8 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
 
     private final ServiceUtil serviceUtil;
 
+    private final ObservationRegistry registry;
+
 
     @Autowired
     public ProductCompositeIntegration(
@@ -66,13 +73,15 @@ public class ProductCompositeIntegration implements ProductService, Recommendati
             WebClient.Builder webClient,
             ObjectMapper mapper,
             StreamBridge streamBridge,
-            ServiceUtil serviceUtil
+            ServiceUtil serviceUtil,
+            ObservationRegistry registry
     ) {
         this.webClient = webClient.build();
         this.mapper = mapper;
         this.streamBridge = streamBridge;
         this.publishEventScheduler = publishEventScheduler;
         this.serviceUtil = serviceUtil;
+        this.registry = registry;
     }
 
     @Override

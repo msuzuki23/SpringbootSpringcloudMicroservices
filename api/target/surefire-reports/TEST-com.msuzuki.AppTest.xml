@@ -35,7 +35,7 @@
     <property name="java.class.version" value="63.0"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="5.15.0-60-generic"/>
+    <property name="os.version" value="5.19.0-32-generic"/>
     <property name="user.home" value="/home/markus"/>
     <property name="user.timezone" value="America/Toronto"/>
     <property name="file.encoding" value="UTF-8"/>

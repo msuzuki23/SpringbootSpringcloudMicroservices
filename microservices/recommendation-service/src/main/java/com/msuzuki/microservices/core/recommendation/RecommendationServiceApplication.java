@@ -1,11 +1,16 @@
 package com.msuzuki.microservices.core.recommendation;
 
 import com.msuzuki.microservices.core.recommendation.persistence.RecommendationEntity;
+import io.micrometer.observation.Observation;
+import io.micrometer.observation.ObservationRegistry;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
+import org.springframework.context.ApplicationListener;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.context.event.EventListener;
@@ -46,4 +51,9 @@ public class RecommendationServiceApplication {
         ReactiveIndexOperations indexOps = mongoTemplate.indexOps(RecommendationEntity.class);
         resolver.resolveIndexFor(RecommendationEntity.class).forEach(e -> indexOps.ensureIndex(e).block());
     }
+
+
+
+
+
 }

@@ -148,11 +148,11 @@ resilience4j.circuitbreaker:
         - com.msuzuki.api.exceptions.InvalidInputException
         - com.msuzuki.api.exceptions.NotFoundException
 
-logging:
-  level:
-    root: INFO
-    com.msuzuki: DEBUG
-    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
+#logging:
+#  level:
+#    root: INFO
+#    com.msuzuki: DEBUG
+#    org.springframework.web.server.adapter.HttpWebHandlerAdapter: TRACE
 
 ---
 spring.config.activate.on-profile: docker
